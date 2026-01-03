@@ -79,6 +79,13 @@ function PropertyPage({ properties, favourites, setFavourites }) {
           >
             Details
           </button>
+          <button
+            className={tab === "map" ? "active" : ""}
+            onClick={() => setTab("map")}
+          >
+            Map
+          </button>
+
         </div>
 
         <div className="tab-content">
@@ -90,6 +97,20 @@ function PropertyPage({ properties, favourites, setFavourites }) {
               <li>Price: £{property.price}</li>
               <li>Tenure: {property.tenure}</li>
             </ul>
+          )}
+
+          {tab === "map" && (
+            <iframe
+              title="Property location"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(
+                property.location
+              )}&output=embed`}
+              width="100%"
+              height="300"
+              style={{ border: 0, borderRadius: "16px" }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           )}
         </div>
       </div>
