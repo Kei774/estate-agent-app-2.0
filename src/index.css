@@ -199,40 +199,69 @@ select:focus {
 /* ---------------- PROPERTY PAGE ---------------- */
 .property-page {
   display: grid;
-  gap: 24px;
+  gap: 32px;
 }
 
+/* ---------------- FILTER TOGGLE ---------------- */
 .filter-toggle {
   display: flex;
   gap: 12px;
 }
 
 .filter-toggle button {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   color: var(--muted);
   border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 13px;
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+.filter-toggle button:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: white;
 }
 
 .filter-toggle button.active {
   background: linear-gradient(to right, var(--accent), var(--accent-2));
   color: black;
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.35);
 }
 
+/* ---------------- CLEAR FAVOURITES ---------------- */
+.clear-favs {
+  align-self: flex-start;
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--danger);
+  margin-bottom: 12px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  transition: all 0.25s ease;
+}
 
+.clear-favs:hover {
+  background: rgba(239, 68, 68, 0.22);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.25);
+}
+
+/* ---------------- FAVOURITE BUTTON ---------------- */
 .fav-btn {
   align-self: flex-start;
-  margin-top: 12px;
-  padding: 10px 20px;
+  margin-top: 14px;
+  padding: 10px 22px;
   border-radius: 999px;
   background: linear-gradient(to right, var(--accent), var(--accent-2));
   color: black;
   font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.3px;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
 }
 
 .fav-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(56, 189, 248, 0.45);
 }
 
 .property-info {

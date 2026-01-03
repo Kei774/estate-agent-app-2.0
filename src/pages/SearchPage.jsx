@@ -51,26 +51,24 @@ function SearchPage({ properties, favourites, setFavourites }) {
       <div className="filter-toggle">
         <button
           className={!showFavouritesOnly ? "active" : ""}
-          onClick={() => setShowFavouritesOnly(false)}
-        >
+          onClick={() => setShowFavouritesOnly(false)}>
           All Properties
         </button>
 
         <button
           className={showFavouritesOnly ? "active" : ""}
-          onClick={() => setShowFavouritesOnly(true)}
-        >
+          onClick={() => setShowFavouritesOnly(true)}>
           Favourites
         </button>
+
+        {favourites.length > 0 && (
+          <button
+            className="clear-favs"
+            onClick={() => setFavourites([])}>
+            Clear favourites
+          </button>
+        )}
       </div>
-
-      <ul>
-        {favourites.length === 0 && <li>No favourites yet</li>}
-
-        {favourites && favourites.map((id) => (
-          <li key={id}>{id}</li>
-        ))}
-      </ul>
 
       <SearchForm criteria={criteria} setCriteria={setCriteria} />
 
