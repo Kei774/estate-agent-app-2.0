@@ -21,13 +21,40 @@ function PropertyPage({ properties, favourites, setFavourites }) {
     }
   };
 
+  const images = property.images || [];
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImage((prev) =>
+      prev === images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImage((prev) =>
+      prev === 0 ? images.length - 1 : prev - 1
+    );
+  };
+  if (!images.length) {
+    return <p>No images available.</p>;
+  }
+
   return (
     <div className="property-page">
       <div className="property-hero">
+        <button className="img-arrow left" onClick={prevImage}>
+          ‹
+        </button>
+
         <img
-          src={`/${property.picture}`}
-          alt={property.type}
+          src={`/${images[currentImage]}`}
+          alt={`${property.type} view`}
         />
+
+        <button className="img-arrow right" onClick={nextImage}>
+          ›
+        </button>
+        
       </div>
 
       <div className="property-info">

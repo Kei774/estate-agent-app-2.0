@@ -202,6 +202,62 @@ select:focus {
   gap: 32px;
 }
 
+/* ---------------- IMAGE CAROUSEL ---------------- */
+.property-hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+
+.property-hero img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Arrows */
+.img-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 26px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  place-items: center;    
+
+  transition: all 0.25s ease;
+}
+
+
+.img-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.img-arrow.left {
+  left: 14px;
+}
+
+.img-arrow.right {
+  right: 14px;
+}
+
+
 /* ---------------- FILTER TOGGLE ---------------- */
 .filter-toggle {
   display: flex;
@@ -284,14 +340,6 @@ select:focus {
   font-size: 14px;
 }
 
-.property-hero img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  border-radius: 24px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-}
-
 .property-page {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -313,11 +361,6 @@ select:focus {
   display: block;
   text-decoration: none;
   color: inherit;
-}
-
-.property-page img {
-  max-width: 500px;
-  border-radius: 16px;
 }
 
 /* ---------------- TABS ---------------- */
