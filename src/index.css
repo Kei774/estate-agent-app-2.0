@@ -201,6 +201,17 @@ select:focus {
   display: grid;
   gap: 32px;
 }
+.floorplan-img {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  display: block;
+  border-radius: 16px;
+  background: white;
+  padding: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
 
 /* ---------------- IMAGE CAROUSEL ---------------- */
 .property-hero {

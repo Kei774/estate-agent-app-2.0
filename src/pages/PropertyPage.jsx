@@ -86,9 +86,23 @@ function PropertyPage({ properties, favourites, setFavourites }) {
             Map
           </button>
 
+          <button
+            className={tab === "floorplan" ? "active" : ""}
+            onClick={() => setTab("floorplan")}
+          >
+            Floorplan
+          </button>
+
         </div>
 
         <div className="tab-content">
+          {tab === "floorplan" && (
+            <img
+              src={`/images/${property.id}/floorplan.jpg`}
+              alt="Property floor plan"
+              className="floorplan-img"
+            />
+          )}
           {tab === "description" && <p>{property.description}</p>}
 
           {tab === "details" && (
