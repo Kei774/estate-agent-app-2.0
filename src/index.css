@@ -202,6 +202,23 @@ select:focus {
   gap: 24px;
 }
 
+.filter-toggle {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-toggle button {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+  border-radius: 999px;
+}
+
+.filter-toggle button.active {
+  background: linear-gradient(to right, var(--accent), var(--accent-2));
+  color: black;
+}
+
+
 .fav-btn {
   align-self: flex-start;
   margin-top: 12px;

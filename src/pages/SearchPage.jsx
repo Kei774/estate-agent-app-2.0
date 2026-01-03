@@ -13,7 +13,13 @@ function SearchPage({ properties, favourites, setFavourites }) {
     postcode: "",
   });
 
+  const [showFavouritesOnly, setShowFavouritesOnly] = useState(false);
+
   const filteredProperties = properties.filter((property) => {
+    if (showFavouritesOnly && !favourites.includes(property.id)) {
+      return false;
+    }
+
     if (criteria.type && property.type !== criteria.type) return false;
 
     if (criteria.minPrice && property.price < Number(criteria.minPrice))
@@ -37,11 +43,27 @@ function SearchPage({ properties, favourites, setFavourites }) {
     return true;
   });
 
+
   return (
     <div className="search-page">
       <h2>Search Properties</h2>
 
-      <h3>Favourites</h3>
+      <div className="filter-toggle">
+        <button
+          className={!showFavouritesOnly ? "active" : ""}
+          onClick={() => setShowFavouritesOnly(false)}
+        >
+          All Properties
+        </button>
+
+        <button
+          className={showFavouritesOnly ? "active" : ""}
+          onClick={() => setShowFavouritesOnly(true)}
+        >
+          Favourites
+        </button>
+      </div>
+
       <ul>
         {favourites.length === 0 && <li>No favourites yet</li>}
 
