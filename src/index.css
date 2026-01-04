@@ -36,8 +36,8 @@ h1 {
   font-size: 32px;
   margin-bottom: 24px;
   background: linear-gradient(to right, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
 }
 
@@ -56,7 +56,6 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  align-items: stretch;
 }
 
 /* ---------------- SEARCH FORM ---------------- */
@@ -74,7 +73,6 @@ form {
 label {
   font-size: 12px;
   color: var(--muted);
-  margin-bottom: 4px;
 }
 
 input,
@@ -101,21 +99,18 @@ select:focus {
   gap: 24px;
 }
 
-/* Tablet */
 @media (max-width: 1100px) {
   .results-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Small tablets */
 @media (max-width: 850px) {
   .results-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Mobile */
 @media (max-width: 500px) {
   .results-grid {
     grid-template-columns: 1fr;
@@ -123,43 +118,16 @@ select:focus {
 }
 
 /* ---------------- PROPERTY CARD ---------------- */
-
-.property-card:active {
-  transform: scale(0.98);
-}
-
-.property-card img {
-  transition: transform 0.4s ease;
-}
-
-.property-card:hover img {
-  transform: scale(1.05);
+.property-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .property-card {
-  cursor: pointer;
   position: relative;
+  cursor: pointer;
   overflow: hidden;
-}
-
-.property-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    600px circle at var(--x, 50%) var(--y, 50%),
-    rgba(56, 189, 248, 0.15),
-    transparent 40%
-  );
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.property-card:hover::before {
-  opacity: 1;
-}
-
-.property-card {
   background: linear-gradient(
     160deg,
     rgba(255, 255, 255, 0.18),
@@ -177,18 +145,43 @@ select:focus {
   box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
 }
 
+.property-card:active {
+  transform: scale(0.98);
+}
+
+.property-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at 50% 50%,
+    rgba(56, 189, 248, 0.15),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.property-card:hover::before {
+  opacity: 1;
+}
+
 .property-card img {
   width: 100%;
   height: 180px;
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 12px;
+  transition: transform 0.4s ease;
+}
+
+.property-card:hover img {
+  transform: scale(1.05);
 }
 
 .property-card h4 {
   font-size: 18px;
   color: var(--accent);
-  margin-bottom: 6px;
 }
 
 .property-card p {
@@ -199,19 +192,16 @@ select:focus {
 /* ---------------- PROPERTY PAGE ---------------- */
 .property-page {
   display: grid;
-  gap: 32px;
-}
-.floorplan-img {
-  width: 100%;
-  max-width: 700px;
-  margin: auto;
-  display: block;
-  border-radius: 16px;
-  background: white;
-  padding: 12px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
 }
 
+@media (max-width: 900px) {
+  .property-page {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* ---------------- IMAGE CAROUSEL ---------------- */
 .property-hero {
@@ -224,36 +214,30 @@ select:focus {
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
 }
 
-
 .property-hero img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
 }
 
-/* Arrows */
+/* ---------------- IMAGE ARROWS ---------------- */
 .img-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.55);
-  color: white;
-  border: none;
   width: 42px;
   height: 42px;
   border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
   font-size: 26px;
+  border: none;
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  place-items: center;    
-
+  display: grid;
+  place-items: center;
   transition: all 0.25s ease;
 }
-
 
 .img-arrow:hover {
   background: rgba(0, 0, 0, 0.8);
@@ -268,69 +252,7 @@ select:focus {
   right: 14px;
 }
 
-
-/* ---------------- FILTER TOGGLE ---------------- */
-.filter-toggle {
-  display: flex;
-  gap: 12px;
-}
-
-.filter-toggle button {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--muted);
-  border-radius: 999px;
-  padding: 8px 18px;
-  font-size: 13px;
-  backdrop-filter: blur(10px);
-  transition: all 0.25s ease;
-}
-
-.filter-toggle button:hover {
-  background: rgba(255, 255, 255, 0.16);
-  color: white;
-}
-
-.filter-toggle button.active {
-  background: linear-gradient(to right, var(--accent), var(--accent-2));
-  color: black;
-  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.35);
-}
-
-/* ---------------- CLEAR FAVOURITES ---------------- */
-.clear-favs {
-  align-self: flex-start;
-  background: rgba(239, 68, 68, 0.12);
-  color: var(--danger);
-  margin-bottom: 12px;
-  padding: 6px 16px;
-  border-radius: 999px;
-  font-size: 12px;
-  transition: all 0.25s ease;
-}
-
-.clear-favs:hover {
-  background: rgba(239, 68, 68, 0.22);
-  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.25);
-}
-
-/* ---------------- FAVOURITE BUTTON ---------------- */
-.fav-btn {
-  align-self: flex-start;
-  margin-top: 14px;
-  padding: 10px 22px;
-  border-radius: 999px;
-  background: linear-gradient(to right, var(--accent), var(--accent-2));
-  color: black;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  transition: transform 0.2s ease, box-shadow 0.25s ease;
-}
-
-.fav-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 35px rgba(56, 189, 248, 0.45);
-}
-
+/* ---------------- PROPERTY INFO ---------------- */
 .property-info {
   background: var(--surface);
   backdrop-filter: blur(18px);
@@ -342,36 +264,9 @@ select:focus {
   gap: 16px;
 }
 
-.property-info h2 {
-  font-size: 26px;
-}
-
 .property-info p {
   color: var(--muted);
   font-size: 14px;
-}
-
-.property-page {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 40px;
-  margin-top: 40px;
-}
-
-@media (max-width: 900px) {
-  .property-page {
-    grid-template-columns: 1fr;
-  }
-}
-
-.property-card {
-  cursor: pointer;
-}
-
-.property-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
 }
 
 /* ---------------- TABS ---------------- */
@@ -407,31 +302,36 @@ select:focus {
   border-radius: 18px;
 }
 
-.tab-content ul {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+/* ---------------- FLOORPLAN ---------------- */
+.floorplan-img {
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  display: block;
+  border-radius: 16px;
+  background: white;
+  padding: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------------- FILTER TOGGLE ---------------- */
+.filter-toggle {
+  display: flex;
   gap: 12px;
 }
 
-.tab-content li {
+.filter-toggle button {
   background: rgba(255, 255, 255, 0.08);
-  padding: 12px;
-  border-radius: 14px;
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 13px;
+  transition: 0.25s ease;
 }
 
-/* ---------------- BUTTON ---------------- */
-button {
+.filter-toggle button.active {
   background: linear-gradient(to right, var(--accent), var(--accent-2));
-  border: none;
   color: black;
-  padding: 10px 16px;
-  border-radius: 12px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.85;
 }
 
 /* ---------------- FAVOURITES ---------------- */
@@ -446,4 +346,20 @@ li {
   padding: 8px 14px;
   border-radius: 999px;
   font-size: 12px;
+}
+
+.clear-favs {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--danger);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.fav-btn {
+  margin-top: 14px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--accent), var(--accent-2));
+  font-weight: 600;
 }
